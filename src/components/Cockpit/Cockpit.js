@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import styles from './Cockpit.module.css'
 
 const Cockpit = props => {
+  const toggleButtonRef = useRef(null);
+
   useEffect(() => {
     console.log('[Cockpit.js] 1st useEffect');
 
-    // Faking Http request
-    setTimeout(() => {
-      alert('Saved data to cloud!')
-    }, 1000)
+    toggleButtonRef.current.click();
 
     return () => {
       console.log('[Cockpit.js] cleanup work in 1st useEffect');
     }
 
     // Execute it when props.personLength is updated
-  // }, [props.personsLength]);
+    // }, [props.personsLength]);
 
-    // Execute it only once
+    // Execute it only once when the component renders the first time
   }, []);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const Cockpit = props => {
     <div className={styles.Cockpit}>
       <h1>{props.title}</h1>
       <p className={classes.join(' ')}>This is really working!</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleButtonRef} className={btnClass} onClick={props.clicked}>
         Toggle Show Persons
       </button>
     </div>
