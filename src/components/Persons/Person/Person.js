@@ -6,6 +6,15 @@ import withClass from '../../../hoc/withClass';
 import Auxiliary from '../../../hoc/Auxiliary';
 
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+
+  componentDidMount() {
+    // this.inputElement.focus();
+    this.inputElementRef.current.focus();
+  }
 
   render() {
     console.log('[Person.js] render');
@@ -22,7 +31,12 @@ class Person extends Component {
         <p onClick={this.props.click} style={pStyle}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
-        <input type="text" onChange={this.props.nameChanged} defaultValue={this.props.name} />
+        <input
+          type="text"
+          // ref={(inputEl) => this.inputElement = inputEl}
+          ref={this.inputElementRef}
+          onChange={this.props.nameChanged}
+          value={this.props.name} />
       </Auxiliary>
       // </WithClass>
       // </React.Fragment>
