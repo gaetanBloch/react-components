@@ -4,18 +4,29 @@ import styles from './Cockpit.module.css'
 
 const Cockpit = (props) => {
   useEffect(() => {
-    console.log('[Cockpit.js] useEffect');
+    console.log('[Cockpit.js] 1st useEffect');
 
     // Faking Http request
     setTimeout(() => {
       alert('Saved data to cloud!')
     }, 1000)
 
+    return () => {
+      console.log('[Cockpit.js] cleanup work in 1st useEffect');
+    }
+
     // Execute it when props.personLength is updated
   // }, [props.personsLength]);
 
     // Execute it only once
   }, []);
+
+  useEffect(() => {
+    console.log('[Cockpit.js] 2nd useEffect');
+    return () => {
+      console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+    }
+  });
 
   const classes = [];
   if (props.personsLength <= 2) {
