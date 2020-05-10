@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import styles from './Person.module.css'
 
-const person = (props) => {
-  const pStyle = {
-    cursor: 'pointer'
-  };
+class Person extends Component {
 
-  return (
-    <div className={styles.Person}>
-      <p onClick={props.click} style={pStyle}>I'm {props.name} and I am {props.age} years old!</p>
-      <input type="text" onChange={props.nameChanged} defaultValue={props.name} />
-    </div>
-  )
-};
+  render() {
+    console.log('[Person.js] render');
 
-export default person;
+    const pStyle = {
+      cursor: 'pointer'
+    };
+
+    return (
+      <div className={styles.Person}>
+        <p onClick={this.props.click} style={pStyle}>
+          I'm {this.props.name} and I am {this.props.age} years old!
+        </p>
+        <input type="text" onChange={this.props.nameChanged} defaultValue={this.props.name} />
+      </div>
+    )
+  }
+}
+
+export default Person;

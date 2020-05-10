@@ -14,6 +14,32 @@ class App extends Component {
     showPersons: false
   };
 
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps');
+    console.log({props, state})
+    return state;
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    console.log('[App.js] shouldComponentUpdate');
+    console.log({nextProps, nextState, nextContext});
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('[App.js] componentDidUpdate');
+    console.log({prevProps, prevState, snapshot});
+  }
+
   togglePersonsHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons
@@ -36,6 +62,8 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] render')
+
     let persons = null
     if (this.state.showPersons) {
       persons = <Persons
