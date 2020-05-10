@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
-import Auxiliary from '../../../hoc/Auxiliary';
+import styles from './Person.module.css'
+import WithClass from '../../../hoc/WithClass';
+// import Auxiliary from '../../../hoc/Auxiliary';
 
 class Person extends Component {
 
@@ -13,14 +15,16 @@ class Person extends Component {
 
     return (
       // <div className={styles.Person}>
+      // <React.Fragment>
       // <Auxiliary>
-      <Fragment>
+      <WithClass classes={styles.Person}>
         <p onClick={this.props.click} style={pStyle}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
         <input type="text" onChange={this.props.nameChanged} defaultValue={this.props.name} />
-      </Fragment>
+      </WithClass>
       // </Auxiliary>
+      //</React.Fragment>
       // </div>
     )
   }
