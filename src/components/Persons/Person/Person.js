@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Auxiliary from '../../../hoc/Auxiliary';
 
@@ -13,12 +13,14 @@ class Person extends Component {
 
     return (
       // <div className={styles.Person}>
-      <Auxiliary>
+      // <Auxiliary>
+      <Fragment>
         <p onClick={this.props.click} style={pStyle}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
         <input type="text" onChange={this.props.nameChanged} defaultValue={this.props.name} />
-      </Auxiliary>
+      </Fragment>
+      // </Auxiliary>
       // </div>
     )
   }
