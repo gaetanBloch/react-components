@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './Person.module.css'
 import withClass from '../../../hoc/withClass';
 import Auxiliary from '../../../hoc/Auxiliary';
+import AuthContext from'../../../context/auth-context'
 
 class Person extends Component {
   constructor(props) {
@@ -28,7 +29,9 @@ class Person extends Component {
       // <React.Fragment>
       // <WithClass classes={styles.Person}>
       <Auxiliary>
-        {this.props.isAuth ? <p>Authenticated!</p> : <p>Please login</p>}
+        <AuthContext.Consumer>
+          {context => context.authenticated ? <p>Authenticated!</p> : <p>Please login</p>}
+        </AuthContext.Consumer>
         <p onClick={this.props.click} style={pStyle}>
           I'm {this.props.name} and I am {this.props.age} years old!
         </p>
